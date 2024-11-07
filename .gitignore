@@ -1,0 +1,7 @@
+.env
+.idea
+oatpp
+opentelemetry-cpp
+otel-cpp
+roll-dice/build
+roll-dice/cmake-build-debug
