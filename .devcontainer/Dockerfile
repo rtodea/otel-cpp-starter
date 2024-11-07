@@ -19,3 +19,6 @@ RUN apt-get install -y gdb
 
 # GStreamer Project dependencies
 RUN apt-get install -y libboost-all-dev
+
+# Install git
+RUN apt-get install -y git

@@ -5,5 +5,13 @@
     "context": ".."
   },
   "postCreateCommand": "bash scripts/install.sh",
-  "remoteUser": "root"
+  "remoteUser": "root",
+  "customizations": {
+    "jetbrains": {
+      "settings": {
+        "Docker:app:DockerSettings.dockerComposePath": "/usr/bin/docker",
+        "Docker:app:DockerSettings.dockerPath": "/usr/bin/docker "
+      }
+    }
+  }
 }
