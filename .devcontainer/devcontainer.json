@@ -1,0 +1,9 @@
+{
+  "name": "RollDiceServer Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "postCreateCommand": "bash scripts/install.sh",
+  "remoteUser": "root"
+}

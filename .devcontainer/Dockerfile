@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
 
 # install cmake version 3.28.1
 RUN apt-get install -y build-essential
