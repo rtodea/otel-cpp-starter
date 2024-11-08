@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Save the current directory
-CURRENT_DIR=$(pwd)
-echo "Current directory: $CURRENT_DIR"
+PREVIOUS_DIR=$(pwd)
+echo "Current directory: $PREVIOUS_DIR"
 
 cd roll-dice/libraries
 
@@ -19,4 +19,5 @@ cmake ..
 make
 
 # Revert back to the original directory
-cd $CURRENT_DIR
+cd $PREVIOUS_DIR
+echo "Reverted back to the original directory: $PREVIOUS_DIR"

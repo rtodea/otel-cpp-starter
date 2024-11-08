@@ -2,10 +2,7 @@
 
 # Save the current directory
 CURRENT_DIR=$(pwd)
-echo "Current directory: $CURRENT_DIR"
-exit 0
-
-cd roll-dice/libraries
+cd roll-dice/libraries || { echo "Directory roll-dice/libraries does not exist. ${CURRENT_DIR}" ; exit 1; }
 
 # install open-telemetry
 git clone https://github.com/open-telemetry/opentelemetry-cpp.git
