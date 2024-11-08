@@ -4,7 +4,6 @@
     "dockerfile": "Dockerfile",
     "context": ".."
   },
-  "postCreateCommand": "bash scripts/install.sh",
   "remoteUser": "root",
   "customizations": {
     "jetbrains": {
