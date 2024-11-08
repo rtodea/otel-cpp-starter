@@ -23,5 +23,7 @@ RUN apt-get install -y libboost-all-dev
 # Install git
 RUN apt-get install -y git
 
-# Run the installation script
-RUN bash scripts/install.sh
+# Run the installation scripts
+RUN bash scripts/install-oatpp-library.sh
+
+RUN bash scripts/install-opentelemetry-cpp.sh
