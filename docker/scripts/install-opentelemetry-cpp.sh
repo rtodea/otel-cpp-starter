@@ -2,6 +2,9 @@
 
 # Save the current directory
 CURRENT_DIR=$(pwd)
+echo "Current directory: $CURRENT_DIR"
+exit 0
+
 cd roll-dice/libraries
 
 # install open-telemetry
