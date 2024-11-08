@@ -24,14 +24,8 @@ RUN apt-get install -y libboost-all-dev
 RUN apt-get install -y git
 
 # Run the installation scripts
-#COPY ./docker/scripts/install-oatpp-library.sh /root/scripts/
-#RUN bash /root/scripts/install-oatpp-library.sh
+COPY ./docker/scripts/install-oatpp-library.sh /root/scripts/
+RUN bash /root/scripts/install-oatpp-library.sh
 
-#COPY ./docker/scripts/install-opentelemetry-cpp.sh /root/scripts/
-#RUN bash /root/scripts/install-opentelemetry-cpp.sh
-
-COPY ./docker/scripts/foo.sh /root/scripts/
-RUN bash /root/scripts/foo.sh
-
-COPY ./docker/scripts/bar.sh /root/scripts
-RUN bash /root/scripts/bar.sh
+COPY ./docker/scripts/install-opentelemetry-cpp.sh /root/scripts/
+RUN bash /root/scripts/install-opentelemetry-cpp.sh
