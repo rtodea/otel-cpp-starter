@@ -22,3 +22,6 @@ RUN apt-get install -y libboost-all-dev
 
 # Install git
 RUN apt-get install -y git
+
+# Run the installation script
+RUN bash scripts/install.sh
