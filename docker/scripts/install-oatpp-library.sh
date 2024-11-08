@@ -2,6 +2,7 @@
 
 # Save the current directory
 CURRENT_DIR=$(pwd)
+echo "Current directory: $CURRENT_DIR"
 
 cd roll-dice/libraries
 
