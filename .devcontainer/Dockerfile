@@ -23,6 +23,8 @@ RUN apt-get install -y libboost-all-dev
 # Install git
 RUN apt-get install -y git libcurl4-openssl-dev
 
+RUN mkdir /tmp/libraries
+
 # oatpp begin
 COPY ./docker/scripts/install-oatpp-library.sh /root/scripts/
 RUN bash /root/scripts/install-oatpp-library.sh

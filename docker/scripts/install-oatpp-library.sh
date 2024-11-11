@@ -3,8 +3,8 @@
 # Save the current directory
 PREVIOUS_DIR=$(pwd)
 echo "Current directory: $PREVIOUS_DIR"
-
-cd roll-dice/libraries
+LIB_DIR=/tmp/libraries
+cd $LIB_DIR || { echo "Directory ${LIB_DIR} does not exist. ${CURRENT_DIR}" ; exit 1; }
 
 # install `google-test` system wide ?
 # install `benchmark` system wide ?

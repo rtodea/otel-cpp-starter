@@ -2,8 +2,8 @@
 
 # Save the current directory
 PREVIOUS_DIRECTORY=$(pwd)
-
-cd roll-dice/libraries || { echo "Directory roll-dice/libraries does not exist. ${CURRENT_DIR}" ; exit 1; }
+LIB_DIR=/tmp/libraries
+cd $LIB_DIR || { echo "Directory ${LIB_DIR} does not exist. ${CURRENT_DIR}" ; exit 1; }
 git clone https://github.com/protocolbuffers/protobuf.git
 cd protobuf
 git checkout v28.3
