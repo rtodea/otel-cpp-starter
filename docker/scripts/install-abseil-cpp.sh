@@ -11,7 +11,9 @@ git submodule update --init --recursive
 # Installing via CMake?
 mkdir build
 cd build
-cmake ..
+cmake \
+  -DBUILD_SHARED_LIBS=ON \
+  ..
 cmake --build . -j $(nproc)
 cmake --install .
 
