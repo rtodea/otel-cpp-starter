@@ -23,9 +23,18 @@ RUN apt-get install -y libboost-all-dev
 # Install git
 RUN apt-get install -y git
 
-# Run the installation scripts
+# oatpp begin
 COPY ./docker/scripts/install-oatpp-library.sh /root/scripts/
 RUN bash /root/scripts/install-oatpp-library.sh
+# oatpp end
+
+# opentelemetry begin
+# deps
+COPY ./docker/scripts/install-bazel.sh /root/scripts/
+RUN sudo apt-get install -y bazel
+COPY ./docker/scripts/install-protobuf-git.sh /root/scripts/
+RUN bash /root/scripts/install-protobuf-git.sh
 
 COPY ./docker/scripts/install-opentelemetry-cpp.sh /root/scripts/
 RUN bash /root/scripts/install-opentelemetry-cpp.sh
+# opentelemetry end
