@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# Save the current directory
-CURRENT_DIR=$(pwd)
+PREVIOUS_DIR=$(pwd)
 LIB_DIR=/tmp/libraries
-cd $LIB_DIR || { echo "Directory ${LIB_DIR} does not exist. ${CURRENT_DIR}" ; exit 1; }
+cd $LIB_DIR || { echo "Directory ${LIB_DIR} does not exist. ${PREVIOUS_DIR}" ; exit 1; }
 
 # install open-telemetry
 git clone https://github.com/open-telemetry/opentelemetry-cpp.git
@@ -14,6 +13,7 @@ cmake -DBUILD_TESTING=OFF \
   -DWITH_OTLP_HTTP=ON \
   -DWITH_ABSEIL=ON \
   ..
+
 cmake --build . -j $(nproc)
 cmake --install . --prefix ../../otel-cpp
-cd $CURRENT_DIR
+cd $PREVIOUS_DIR

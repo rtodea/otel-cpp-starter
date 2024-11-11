@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Save the current directory
-PREVIOUS_DIRECTORY=$(pwd)
+PREVIOUS_DIR=$(pwd)
 cd /tmp/libraries || { echo "Directory /tmp/libraries does not exist. ${CURRENT_DIR}" ; exit 1; }
 git clone https://github.com/abseil/abseil-cpp.git
 cd abseil-cpp
@@ -17,4 +16,4 @@ cmake \
 cmake --build . -j $(nproc)
 cmake --install .
 
-cd $PREVIOUS_DIRECTORY
+cd $PREVIOUS_DIR

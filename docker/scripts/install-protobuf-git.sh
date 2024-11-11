@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Save the current directory
-PREVIOUS_DIRECTORY=$(pwd)
+PREVIOUS_DIR=$(pwd)
 LIB_DIR=/tmp/libraries
 cd $LIB_DIR || { echo "Directory ${LIB_DIR} does not exist. ${CURRENT_DIR}" ; exit 1; }
 git clone https://github.com/protocolbuffers/protobuf.git
@@ -30,4 +30,4 @@ cmake --install .
 # cd third_party/abseil-cpp
 # make install
 
-cd $PREVIOUS_DIRECTORY
+cd $PREVIOUS_DIR
