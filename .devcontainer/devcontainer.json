@@ -1,7 +1,7 @@
 {
   "name": "RollDiceServer Dev Container",
   "build": {
-    "dockerfile": "Dockerfile",
+    "dockerfile": "../Dockerfile",
     "context": ".."
   },
   "remoteUser": "root",
