@@ -20,4 +20,8 @@ cmake .. -DCMAKE_CXX_STANDARD=14 -Dprotobuf_LIBPROTOBUF=ON -Dprotobuf_BUILD_TEST
 cmake --build .
 cmake --install .
 
+# also installing the `absl` library
+cd third_party/abseil-cpp
+make install
+
 cd $PREVIOUS_DIRECTORY

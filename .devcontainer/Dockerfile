@@ -21,7 +21,7 @@ RUN apt-get install -y gdb
 RUN apt-get install -y libboost-all-dev
 
 # Install git
-RUN apt-get install -y git
+RUN apt-get install -y git libcurl4-openssl-dev
 
 # oatpp begin
 COPY ./docker/scripts/install-oatpp-library.sh /root/scripts/
