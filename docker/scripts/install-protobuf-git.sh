@@ -16,8 +16,13 @@ git submodule update --init --recursive
 # Installing via CMake?
 mkdir build
 cd build
-cmake .. -DCMAKE_CXX_STANDARD=14 -Dprotobuf_LIBPROTOBUF=ON -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_BUILD_EXAMPLES=OFF
-cmake --build .
+cmake .. \
+  -DCMAKE_CXX_STANDARD=14 \
+  -Dprotobuf_LIBPROTOBUF=ON \
+  -Dprotobuf_BUILD_TESTS=OFF \
+  -Dprotobuf_BUILD_EXAMPLES=OFF \
+  -Dprotobuf_BUILD_SHARED_LIBS=ON
+cmake --build . -j $(nproc)
 cmake --install .
 
 # also installing the `absl` library
