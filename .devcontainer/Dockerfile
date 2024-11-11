@@ -30,8 +30,12 @@ RUN bash /root/scripts/install-oatpp-library.sh
 
 # opentelemetry begin
 # deps
-COPY ./docker/scripts/install-bazel.sh /root/scripts/
-RUN sudo apt-get install -y bazel
+# COPY ./docker/scripts/install-bazel.sh /root/scripts/
+# RUN sudo apt-get install -y bazel
+
+COPY ./docker/scripts/install-abseil-cpp.sh /root/scripts/
+RUN bash /root/scripts/install-abseil-cpp.sh
+
 COPY ./docker/scripts/install-protobuf-git.sh /root/scripts/
 RUN bash /root/scripts/install-protobuf-git.sh
 

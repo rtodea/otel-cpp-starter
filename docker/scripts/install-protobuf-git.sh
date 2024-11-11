@@ -21,7 +21,7 @@ cmake --build .
 cmake --install .
 
 # also installing the `absl` library
-cd third_party/abseil-cpp
-make install
+# cd third_party/abseil-cpp
+# make install
 
 cd $PREVIOUS_DIRECTORY
