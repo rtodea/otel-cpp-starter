@@ -17,6 +17,7 @@ mkdir build
 cd build
 cmake ..
 make
+make install
 
 # Revert back to the original directory
 cd $PREVIOUS_DIR

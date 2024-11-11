@@ -12,6 +12,7 @@ cd build
 cmake -DBUILD_TESTING=OFF \
   -DWITH_OTLP_HTTP=ON \
   -DWITH_ABSEIL=ON \
+  -DBUILD_SHARED_LIBS=ON \
   ..
 
 cmake --build . -j $(nproc)
