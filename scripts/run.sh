@@ -1,3 +1,3 @@
 #!/bin/bash
 
-LD_LIBRARY_PATH=/app/roll-dice/libraries/otel-cpp/lib/ ./dice-server
+LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib:/app/roll-dice/libraries/otel-cpp/lib" ./roll-dice/build/dice-server
