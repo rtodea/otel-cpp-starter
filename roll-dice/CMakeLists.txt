@@ -8,7 +8,12 @@ set(project_name roll-dice-server)
 # Define your project's source files
 set(SOURCES
     main.cpp
-        tracing/Tracer.cpp
+        tracing/GrafanaTracer.cpp
+        tracing/GrafanaTracer.h
+        tracing/DummyTracer.cpp
+        tracing/DummyTracer.h
+        tracing/TracerProvider.cpp
+        tracing/TracerProvider.h
         tracing/Tracer.h  # Add your source files here
 )
 find_package(Threads REQUIRED)
