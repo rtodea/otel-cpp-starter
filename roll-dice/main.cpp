@@ -15,6 +15,12 @@
 #include <ctime>
 #include <string>
 
+#include <unistd.h>
+#include <cstdio>
+#include <cstdlib>
+
+extern char **environ;
+
 using namespace std;
 namespace trace_api = opentelemetry::trace;
 namespace trace_sdk = opentelemetry::sdk::trace;
@@ -24,17 +30,39 @@ namespace otlp = opentelemetry::exporter::otlp;
 namespace {
     void InitTracer() {
         otlp::OtlpHttpExporterOptions opts;
-        opts.url = "https://otlp-gateway-prod-us-east-0.grafana.net/otlp";
-        auto otlp_exporter = otlp::OtlpHttpExporterFactory::Create(opts);
-        auto processor = trace_sdk::SimpleSpanProcessorFactory::Create(std::move(otlp_exporter));
-        // Create a resource with the necessary attributes
+
+        const char *path_var = std::getenv("PATH");
+        if (path_var != NULL) {
+            std::cout << "PATH: " << path_var << std::endl;
+        } else {
+            std::cout << "PATH environment variable is not set" << std::endl;
+        }
+
+        std::cout << "Environment variables:" << std::endl;
+        for (char **env = environ; *env; ++env) {
+            std::cout << *env << std::endl;
+        }
+        const char* otel_endpoint = std::getenv("OTEL_EXPORTER_OTLP_ENDPOINT");
+        if (NULL == otel_endpoint) {
+            throw std::runtime_error("OTEL_EXPORTER_OTLP_ENDPOINT environment variable is not set");
+        }
+        const char* otel_headers = std::getenv("OTEL_EXPORTER_OTLP_HEADERS");
+        if (NULL == otel_headers) {
+            throw std::runtime_error("OTEL_EXPORTER_OTLP_HEADERS environment variable is not set");
+        }
+        const char* otel_resource_attributes = std::getenv("OTEL_RESOURCE_ATTRIBUTES");
+        if (NULL == otel_resource_attributes) {
+            throw std::runtime_error("OTEL_RESOURCE_ATTRIBUTES environment variable is not set");
+        }
+
+        auto exporter  = otlp::OtlpHttpExporterFactory::Create(opts);
+        auto processor = trace_sdk::SimpleSpanProcessorFactory::Create(std::move(exporter));
         auto resource = opentelemetry::sdk::resource::Resource::Create(
                 {{"service.name", "gstreamer"}});
         std::shared_ptr<opentelemetry::trace::TracerProvider> provider =
                 trace_sdk::TracerProviderFactory::Create(std::move(processor), resource);
-
-        //set the global trace provider
-        trace_api::Provider::SetTracerProvider(provider);
+        std::shared_ptr<opentelemetry::trace::TracerProvider> api_provider = provider;
+        trace_api::Provider::SetTracerProvider(api_provider);
     }
 
     void CleanupTracer() {
