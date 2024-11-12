@@ -8,14 +8,13 @@ TracerProvider &TracerProvider::getInstance() {
     return instance;
 }
 
-std::shared_ptr <Tracer> TracerProvider::getTracer() {
+std::shared_ptr <AppTracer> TracerProvider::getTracer() {
     if (!tracerInstance) {
         // Check for OTEL_* environment variables
         if (std::getenv("OTEL_EXPORTER_OTLP_ENDPOINT") \
- && std::getenv("OTEL_EXPORTER_OTLP_HEADERS") \
- && std::getenv("OTEL_RESOURCE_ATTRIBUTES")) {
+        && std::getenv("OTEL_EXPORTER_OTLP_HEADERS") \
+        && std::getenv("OTEL_RESOURCE_ATTRIBUTES")) {
             // Create GrafanaTracer instance
-            TraceService traceService;
             tracerInstance = std::make_shared<GrafanaTracer>("room1", "endpoint1", "user1");
         } else {
             // Create DummyTracer instance

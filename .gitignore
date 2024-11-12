@@ -5,3 +5,4 @@ roll-dice/libraries/opentelemetry-cpp
 roll-dice/libraries/otel-cpp
 roll-dice/build
 roll-dice/cmake-build-debug
+roll-dice/cmake-build-debug-docker

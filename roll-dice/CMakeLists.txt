@@ -14,7 +14,7 @@ set(SOURCES
         tracing/DummyTracer.h
         tracing/TracerProvider.cpp
         tracing/TracerProvider.h
-        tracing/Tracer.h  # Add your source files here
+        tracing/AppTracer.h  # Add your source files here
 )
 find_package(Threads REQUIRED)
 
